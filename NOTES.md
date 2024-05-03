@@ -1,4 +1,12 @@
 
+```sh
+
+
+$ terraform apply -replace=module.gke.local_file.kubeconfig -replace=module.kbot-tf-flux-boot
+strap.flux_bootstrap_git.this -var-file="vars.tfvars"
+
+```
+
 ## Setup
 ```sh
 flux create source git kbot \

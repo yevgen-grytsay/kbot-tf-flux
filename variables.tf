@@ -1,6 +1,6 @@
 variable "github_token" {
-  sensitive = true
   type      = string
+  sensitive = true
 }
 
 variable "github_org" {
@@ -10,3 +10,15 @@ variable "github_org" {
 variable "github_repository" {
   type = string
 }
+
+variable "google_project_id" {
+  type = string
+}
+
+variable "google_location" {
+  type = string
+}
+
+# variable "kubeconfig" {
+#   type = string
+# }

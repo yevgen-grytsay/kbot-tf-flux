@@ -32,9 +32,12 @@ kubectl create secret generic kbot-helm-values \
 	--from-file=values.yaml=./helm-values.yaml
 
 envsubst '$TELE_TOKEN' < helm-values.tpl.yaml > helm-values.yaml
+
+terraform apply -var-file="vars.tfvars"
 ```
 
 ## Resources
+- [google | kubernetes-engine/auth](https://registry.terraform.io/modules/terraform-google-modules/kubernetes-engine/google/latest/submodules/auth)
 - [Flux | Core Concepts](https://fluxcd.io/flux/concepts/)
 - [Terraform | Modules](https://developer.hashicorp.com/terraform/language/modules)
 - [flux create source git](https://fluxcd.io/flux/cmd/flux_create_source_git/)
