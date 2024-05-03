@@ -19,7 +19,7 @@ resource "google_container_cluster" "cluster" {
 }
 
 resource "google_container_node_pool" "main" {
-  name       = "kbot-main"
+  name       = "kbot"
   project    = google_container_cluster.cluster.project
   cluster    = google_container_cluster.cluster.name
   location   = google_container_cluster.cluster.location

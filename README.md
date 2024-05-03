@@ -34,6 +34,8 @@ kubectl create secret generic kbot-helm-values \
 envsubst '$TELE_TOKEN' < helm-values.tpl.yaml > helm-values.yaml
 
 terraform apply -var-file="vars.tfvars"
+
+# gcloud container clusters get-credentials kbot --location=<location>
 ```
 
 ## Resources
