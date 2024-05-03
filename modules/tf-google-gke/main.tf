@@ -31,13 +31,13 @@ resource "google_container_node_pool" "main" {
 }
 
 module "gke_auth" {
-  source               = "terraform-google-modules/kubernetes-engine/google//modules/auth"
-  version              = "30.2.0"
-  project_id           = var.GOOGLE_PROJECT
-  cluster_name         = var.CLUSTER_NAME
-  location             = var.GOOGLE_LOCATION
-  use_private_endpoint = true
-  depends_on           = [google_container_cluster.cluster]
+  source       = "terraform-google-modules/kubernetes-engine/google//modules/auth"
+  version      = "30.2.0"
+  project_id   = var.GOOGLE_PROJECT
+  cluster_name = var.CLUSTER_NAME
+  location     = var.GOOGLE_LOCATION
+  # use_private_endpoint = true
+  depends_on = [google_container_cluster.cluster, google_container_node_pool.main]
 }
 
 resource "local_file" "kubeconfig" {

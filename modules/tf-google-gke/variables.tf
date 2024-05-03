@@ -18,7 +18,7 @@ variable "GKE_MACHINE_TYPE" {
 variable "GKE_NUM_NODES" {
   description = "node pool"
   type        = number
-  default     = 1
+  default     = 2
 }
 
 # variable "KUBECONFIG_PATH" {

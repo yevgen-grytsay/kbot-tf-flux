@@ -45,3 +45,9 @@ flux create helmrelease kbot \
     --values-from=Secret/kbot-helm-values \
     --export > ./clusters/kbot/kbot-hr.yaml
 ```
+
+## Misc
+
+```sh
+gcloud compute machine-types list --filter="zone:(us-central1-c)" --sort-by="CPUS,MEMORY_GB"
+```
