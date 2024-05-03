@@ -8,7 +8,15 @@ flux create source git kbot \
 
 read -s TELE_TOKEN
 export TELE_TOKEN
-kubectl create secret generic kbot-helm-values --from-literal=secret.tokenValue="$TELE_TOKEN"
+TELE_TOKEN=$(echo $TELE_TOKEN | tr -d '\n' | base64)
+# kubectl create secret generic kbot-helm-values \
+#     --namespace=kbot-tf-flux \
+#     --from-literal=secret.tokenValue="$TELE_TOKEN"
+
+kubectl create secret generic kbot-helm-values \
+    --namespace=kbot-tf-flux \
+	--from-file=values.yaml=./helm-values.yaml
+envsubst '$TELE_TOKEN' < helm-values.tpl.yaml > helm-values.yaml
 
 
 flux create helmrelease kbot \
