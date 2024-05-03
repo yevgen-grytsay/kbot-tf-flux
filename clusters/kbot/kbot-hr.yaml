@@ -8,11 +8,12 @@ spec:
   chart:
     spec:
       chart: ./helm
-      reconcileStrategy: ChartVersion
+      # reconcileStrategy: ChartVersion
+      reconcileStrategy: Revision
       sourceRef:
         kind: GitRepository
         name: kbot
   interval: 1m0s
   valuesFrom:
-  - kind: Secret
-    name: kbot-helm-values
+    - kind: Secret
+      name: kbot-helm-values
