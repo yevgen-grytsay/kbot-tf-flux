@@ -1,8 +1,8 @@
 ```sh
 flux create source git kbot \
+    --namespace=kbot-tf-flux \
     --url=https://github.com/yevgen-grytsay/kbot \
     --branch=main \
-    --namespace=kbot-tf-flux \
     --export > ./clusters/kbot/kbot-gr.yaml
 
 
@@ -12,6 +12,7 @@ kubectl create secret generic kbot-helm-values --from-literal=secret.tokenValue=
 
 
 flux create helmrelease kbot \
+    --namespace=kbot-tf-flux \
     --interval=1m \
     --source=GitRepository/kbot \
     --chart=./helm \

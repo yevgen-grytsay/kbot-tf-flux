@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: kbot
-  namespace: flux-system
+  namespace: kbot-tf-flux
 spec:
   chart:
     spec:
@@ -14,5 +14,5 @@ spec:
         name: kbot
   interval: 1m0s
   valuesFrom:
-    - kind: Secret
-      name: kbot-helm-values
+  - kind: Secret
+    name: kbot-helm-values
