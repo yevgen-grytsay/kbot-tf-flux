@@ -19,6 +19,17 @@ variable "google_location" {
   type = string
 }
 
-# variable "kubeconfig" {
-#   type = string
-# }
+variable "app_name" {
+  description = "will be used to name various resources"
+  type        = string
+}
+
+variable "gke_num_nodes" {
+  description = "number of nodes in GKE cluster"
+  type        = string
+}
+
+variable "gke_machine_type" {
+  description = "type of machines that will be created for GKE cluster"
+  type        = string
+}

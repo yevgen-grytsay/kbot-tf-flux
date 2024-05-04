@@ -1,3 +1,8 @@
+variable "CLUSTER_NAME" {
+  description = "name that will be used for cluster and node pool"
+  type        = string
+}
+
 variable "GOOGLE_PROJECT" {
   description = "GCP project name"
   type        = string
@@ -18,11 +23,5 @@ variable "GKE_MACHINE_TYPE" {
 variable "GKE_NUM_NODES" {
   description = "node pool"
   type        = number
-  default     = 2
+  default     = 1
 }
-
-# variable "KUBECONFIG_PATH" {
-#   type     = string
-#   nullable = false
-# }
-

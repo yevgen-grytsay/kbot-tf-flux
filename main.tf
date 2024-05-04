@@ -1,8 +1,3 @@
-# variable "kubeconfig" {
-#   type    = string
-#   default = "./kubeconfig"
-# }
-
 provider "google" {
   project = var.google_project_id
   zone    = var.google_location
@@ -30,9 +25,11 @@ module "gke" {
     google.alias = google
   }
 
-  # KUBECONFIG_PATH = var.kubeconfig
-  GOOGLE_PROJECT  = var.google_project_id
-  GOOGLE_LOCATION = var.google_location
+  CLUSTER_NAME     = var.app_name
+  GOOGLE_PROJECT   = var.google_project_id
+  GOOGLE_LOCATION  = var.google_location
+  GKE_NUM_NODES    = var.gke_num_nodes
+  GKE_MACHINE_TYPE = var.gke_machine_type
 }
 
 module "kbot-tf-flux-bootstrap" {
@@ -43,9 +40,4 @@ module "kbot-tf-flux-bootstrap" {
   providers = {
     flux.alias = flux
   }
-
-  # github_org        = var.github_org
-  # github_repository = var.github_repository
-  # github_token      = var.github_token
-  # kubeconfig_path = module.gke.kubeconfig_local_file_path
 }

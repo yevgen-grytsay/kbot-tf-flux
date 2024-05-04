@@ -1,0 +1,11 @@
+app_name = "my-app"
+
+github_org        = "yevgen-grytsay"
+github_token      = "" # GitHub PAT
+github_repository = "kbot-tf-flux"
+
+google_location   = "us-central1-c"
+google_project_id = ""
+
+gke_num_nodes    = 2
+gke_machine_type = "g1-small"
