@@ -61,17 +61,25 @@ end
 
 ## Setup
 ```sh
-read -s TELE_TOKEN_RAW
+gcloud auth application-default login --project=PROJECT_ID
 
+# OR
+# gcloud auth application-default login
+# gcloud config set project PROJECT_ID
+```
+
+```sh
+read -s TELE_TOKEN_RAW
 export TELE_TOKEN_RAW
 
 TELE_TOKEN=$(echo $TELE_TOKEN_RAW | tr -d '\n' | base64)
+export TELE_TOKEN
+
+envsubst '$TELE_TOKEN' < helm-values.tpl.yaml > helm-values.yaml
 
 kubectl create secret generic kbot-helm-values \
     --namespace=kbot-tf-flux \
 	--from-file=values.yaml=./helm-values.yaml
-
-envsubst '$TELE_TOKEN' < helm-values.tpl.yaml > helm-values.yaml
 
 terraform apply -var-file="vars.tfvars"
 
