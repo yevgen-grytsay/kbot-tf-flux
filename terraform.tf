@@ -1,6 +1,11 @@
 terraform {
   backend "gcs" {
-    bucket = "kbot-tf"
+    bucket = "kbot-bucket"
     prefix = "terraform/state"
+  }
+  required_providers {
+    flux = {
+      source = "fluxcd/flux"
+    }
   }
 }

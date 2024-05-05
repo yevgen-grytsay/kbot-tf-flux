@@ -1,4 +1,19 @@
 
+
+
+```sh
+$ terraform apply -replace=module.gke.local_file.kubeconfig -replace=module.kbot-tf-flux-boot
+strap.flux_bootstrap_git.this -var-file="vars.tfvars"
+```
+
+## Security
+
+> PAT secret
+>
+> Note that the GitHub PAT is stored in the cluster as a Kubernetes Secret named flux-system inside the flux-system namespace. If you want to avoid storing your PAT in the cluster, please see how to configure GitHub Deploy Keys.
+>
+> [Flux | Bootstrap | GitHub Personal Account](https://fluxcd.io/flux/installation/bootstrap/github/#github-personal-account)
+
 ## Setup
 ```sh
 flux create source git kbot \
@@ -29,4 +44,10 @@ flux create helmrelease kbot \
     --chart=./helm \
     --values-from=Secret/kbot-helm-values \
     --export > ./clusters/kbot/kbot-hr.yaml
+```
+
+## Misc
+
+```sh
+gcloud compute machine-types list --filter="zone:(us-central1-c)" --sort-by="CPUS,MEMORY_GB"
 ```

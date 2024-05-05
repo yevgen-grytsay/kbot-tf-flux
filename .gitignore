@@ -35,3 +35,4 @@ terraform.rc
 
 #
 helm-values.yaml
+kubeconfig
